@@ -10,41 +10,71 @@
 </head>
 <body class="container">
     <h2>Editar Empleado</h2><hr />
-        <form method="post" th:action="@{}">
+
+        <form method="post" th:action="@{'/employee/save'}" th:object="${employees}">
+            <input th:field="*{employeeId}" type="hidden">
             <!-- COMPLETAR -->
 
             <div class="row">
                 <div class="form-group col-6">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{firstName}">
                     <!-- COMPLETAR -->
                 </div>
                 <div class="form-group col-6">
+                        <label class="form-label">Apellido</label>
+                        <input type="text" class="form-control" th:field="*{lastName}">
                     <!-- COMPLETAR -->
                 </div>
+
             </div>
 
             <div class="form-group">
+                <label class="form-label">Correo</label>
+                <input type="text" class="form-control" th:field="*{email}">
                 <!-- COMPLETAR -->
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label class="form-label">Puesto</label>
+                    <select class="form-select" name="jobs">
+                        <option th:each="trabajo : ${listaTrabajos}" th:value="${trabajo.getJobId()}"
+                                th:text="${trabajo.getJobTitle()}"
+                                th:selected="${trabajo.jobId == employees.jobs.jobId}"></option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label class="form-label">Sueldo</label>
+                    <input type="number" class="form-control" th:field="*{salary}">
+                    <!-- COMPLETADO -->
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label class="form-label">Jefe</label>
+                    <select class="form-select" name="manager" id="manager">
+                        <option th:each="jefe : ${listaJefes}"
+                                th:selected="${employees.manager != null and (jefe.employeeId == employees.manager.employeeId)}"
+                                th:text="|${jefe.firstName} ${jefe.lastName==null?'':jefe.lastName}|"
+                                th:value="${jefe.employeeId}"></option>
+                    </select>
+                    <!-- COMPLETADO -->
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label class="form-label">Departamento</label>
+                    <select class="form-select" name="departments">
+                        <option th:each="departamentos : ${listaDepartamentos}" th:value="${departamentos.departmentId}"
+                                th:text="${departamentos.departmentName}"
+                                th:selected="${departamentos.departmentId == employees.departments.departmentId}"></option>
+                    </select>
+                    <!-- COMPLETADO -->
                 </div>
             </div>
 
-            <a th:href="@{}" class="btn btn-danger"></a>                 <!-- COMPLETAR -->
+            <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button><!-- COMPLETAR -->
             <!-- COMPLETAR -->
         </form>
     </body>

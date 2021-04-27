@@ -1,8 +1,10 @@
 package com.example.laboratorio3.repository;
 
 
+import com.example.laboratorio3.entity.Employees;
 import dto.DepartamentosPaisCiudadDTO;
 import dto.EmpleadosSalarioDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +12,7 @@ import java.util.List;
 
 
 @Repository
-public interface EmployeesRepository {
+public interface EmployeesRepository extends JpaRepository<Employees,Integer> {
 
 @Query(value = "SELECT e.first_name as 'nombre', e.last_name as 'apellido', jh.start_date as 'fechainicio',\n" +
         "jh.end_date as 'fechafin',j.job_title as 'puesto' FROM hr.employees e\n" +
