@@ -9,9 +9,38 @@
 </head>
 <body class="container">
 <h1>Gestión de Búsquedas</h1>
-<a th:href="@{}">Empleados con Mayor Salario a 15000</a><br />                <!-- COMPLETAR -->
-<a th:href="@{}">Reporte de salario máximo por departamento</a><br />                <!-- COMPLETAR -->
-<a th:href="@{}">Reporte de departamento por país y ciudad</a><br>                <!-- COMPLETAR -->
+<a th:href="@{}">Empleados con Mayor Salario a 15000</a><br />
+    <!-- COMPLETAR -->
+    <table class="table table-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha fin</th>
+            <th>Puesto</th>
+        </tr>
+        <tr th:each="empleadoPorSalario : ${listaEmpleadosPorSalario}">
+            <td th:text="${empleadoPorSalario.getNombre()}"></td>
+            <td th:text="${empleadoPorSalario.getApellido()}"></td>
+            <td th:text="${empleadoPorSalario.getFechainicio()}"></td>
+            <td th:text="${empleadoPorSalario.getFechafin()}"></td>
+            <td th:text="${empleadoPorSalario.getPuesto()}"></td>
+        </tr>
+    </table>
+<a th:href="@{}">Reporte de departamento por país y ciudad</a><br>
+    <!-- COMPLETAR -->
+    <table class="table table-sm">
+        <tr>
+            <th>País</th>
+            <th>Ciudad</th>
+            <th>Cantidad</th>
+        </tr>
+        <tr th:each="reporte : ${listaDepartamentoPaisCiudad}">
+            <td th:text="${reporte.getPais()}"></td>
+            <td th:text="${reporte.getCiudad()}"></td>
+            <td th:text="${reporte.getCantidad()}"></td>
+        </tr>
+    </table>
 <a th:href="@{}">Reporte de gerentes con experiencia</a>                <!-- COMPLETAR -->
 </body>
 </html>
