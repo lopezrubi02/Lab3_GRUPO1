@@ -29,10 +29,18 @@ public class Employees {
     private String salary;
     @Column(name = "commission_pct")
     private Double commissionPct;
-    @Column(name = "manager_id")
-    private int managerId;
-    @Column(name = "department_id")
-    private int departmentId;
+    //@Column(name = "manager_id")
+    //private int managerId;
+    @ManyToOne
+    @JoinColumn(name="manager_id")
+    private Employees manager;
+    //@Column(name = "department_id")
+    //private int departmentId;
+
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Departments departments;
+
     private int enabled;
 
     public int getEmployeeId() {
@@ -115,20 +123,20 @@ public class Employees {
         this.commissionPct = commissionPct;
     }
 
-    public int getManagerId() {
-        return managerId;
+    public Employees getManager() {
+        return manager;
     }
 
-    public void setManagerId(int managerId) {
-        this.managerId = managerId;
+    public void setManager(Employees manager) {
+        this.manager = manager;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public Departments getDepartments() {
+        return departments;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
     }
 
     public int getEnabled() {
