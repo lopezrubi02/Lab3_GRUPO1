@@ -22,7 +22,7 @@ public class EmployeeController {
         model.addAttribute("listaEmpleados", employeesRepository.findAll());
         return "employee/lista";
     }
-
+    @GetMapping(value = { "/new"})
     public String nuevoEmployeeForm( ) {
         //COMPLETAR
         return "0";

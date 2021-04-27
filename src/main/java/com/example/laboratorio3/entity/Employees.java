@@ -1,9 +1,6 @@
 package com.example.laboratorio3.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.util.Date;
 
 //COMPLETAR
 @Entity
@@ -11,17 +8,30 @@ import java.util.Date;
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private int employeeId;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String email;
     private String password;
+    @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "hire_date")
     private String hireDate;
-    private String jobId;
+
+    //private String jobId;
+
+    @ManyToOne
+    @JoinColumn(name ="job_id")
+    private Jobs jobs;
     private String salary;
+    @Column(name = "commission_pct")
     private Double commissionPct;
+    @Column(name = "manager_id")
     private int managerId;
+    @Column(name = "department_id")
     private int departmentId;
     private int enabled;
 
@@ -81,12 +91,12 @@ public class Employees {
         this.hireDate = hireDate;
     }
 
-    public String getJobId() {
-        return jobId;
+    public Jobs getJobs() {
+        return jobs;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setJobs(Jobs jobs) {
+        this.jobs = jobs;
     }
 
     public String getSalary() {
