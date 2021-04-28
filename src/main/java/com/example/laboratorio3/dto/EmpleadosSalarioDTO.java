@@ -1,4 +1,4 @@
-package dto;
+package com.example.laboratorio3.dto;
 
 import java.time.DateTimeException;
 import java.util.Date;

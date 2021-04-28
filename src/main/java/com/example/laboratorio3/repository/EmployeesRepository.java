@@ -2,9 +2,9 @@ package com.example.laboratorio3.repository;
 
 
 import com.example.laboratorio3.entity.Employees;
-import dto.DepartamentosPaisCiudadDTO;
-import dto.EmpleadosSalarioDTO;
-import dto.GerenteConExperienciaDTO;
+import com.example.laboratorio3.dto.DepartamentosPaisCiudadDTO;
+import com.example.laboratorio3.dto.EmpleadosSalarioDTO;
+import com.example.laboratorio3.dto.GerenteConExperienciaDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
