@@ -15,7 +15,7 @@ public class Employees {
     @Column(name = "last_name")
     private String lastName;
     private String email;
-    private String password;
+    //private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "hire_date")
@@ -41,7 +41,7 @@ public class Employees {
     @JoinColumn(name="department_id")
     private Departments departments;
 
-    private int enabled;
+    //private int enabled;
 
     public int getEmployeeId() {
         return employeeId;
@@ -75,13 +75,6 @@ public class Employees {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -139,13 +132,6 @@ public class Employees {
         this.departments = departments;
     }
 
-    public int getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    }
 
     //COMPLETAR
 }
