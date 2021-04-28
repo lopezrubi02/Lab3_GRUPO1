@@ -102,7 +102,7 @@ public class EmployeeController {
     //COMPLETAR
     @PostMapping("/BuscarEmpleados")
     public String buscarEmpleado(@RequestParam("searchField") String searchField, Model model){
-        List<Employees> listaEmpleados = employeesRepository.buscarEmpleadosporNombre(searchField);
+        List<Employees> listaEmpleados = employeesRepository.buscarEmpleadosporBuscador(searchField);
         model.addAttribute("listaEmpleados",listaEmpleados);
         return "employee/lista";
     }
