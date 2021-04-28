@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label class="form-label">Departamento</label>
-                    <select class="form-select" name="departments">
+                    <select class="form-select" name="departments" id="departments">
                         <option th:each="departamentos : ${listaDepartamentos}" th:value="${departamentos.departmentId}"
                                 th:text="${departamentos.departmentName}"
                                 th:selected="${departamentos.departmentId == employees.departments.departmentId}"></option>
@@ -72,6 +72,8 @@
                     <!-- COMPLETADO -->
                 </div>
             </div>
+            <input type="hidden" id="hireDate" name="hireDate" th:value="${employees.hireDate}">
+
 
             <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Actualizar</button><!-- COMPLETAR -->
