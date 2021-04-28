@@ -3,6 +3,7 @@ package com.example.laboratorio3.repository;
 
 import dto.DepartamentosPaisCiudadDTO;
 import dto.EmpleadosSalarioDTO;
+import dto.GerenteConExperienciaDTO;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +29,13 @@ List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
         "GROUP BY l.city\n" +
         "HAVING `empleados` > 3",nativeQuery = true)
     List<DepartamentosPaisCiudadDTO> obtenerReporteDepartamentosPaisCiudad();
+
+@Query(value = "SELECT d.department_name as 'departamento', m.first_name as 'nombre',m.last_name as 'apellido',\n" +
+        "\t m.salary as 'sueldo' FROM employees e \n" +
+        "INNER JOIN jobs j ON e.job_id=j.job_id \n" +
+        "LEFT JOIN departments d ON e.department_id=d.department_id \n" +
+        "LEFT JOIN employees m ON e.manager_id= m.employee_id\n" +
+        "where (now()-m.hire_date)>5",nativeQuery = true)
+    List<GerenteConExperienciaDTO> obtenerGerenteConExperiencia();
 
 }

@@ -42,5 +42,19 @@
         </tr>
     </table>
 <a th:href="@{}">Reporte de gerentes con experiencia</a>                <!-- COMPLETAR -->
+    <table class="table table-sm">
+        <tr>
+            <th>Departamento</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sueldo</th>
+        </tr>
+        <tr th:each="gerente : ${listaGerentesExperiencia}">
+            <td th:text="${gerente.getDepartamento()}"></td>
+            <td th:text="${gerente.getNombre()}"></td>
+            <td th:text="${gerente.getApellido()}"></td>
+            <td th:text="${gerente.getSueldo()}"></td>
+        </tr>
+    </table>
 </body>
 </html>

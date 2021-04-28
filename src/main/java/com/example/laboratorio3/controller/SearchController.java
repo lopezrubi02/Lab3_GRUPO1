@@ -28,7 +28,7 @@ public class SearchController {
 
         model.addAttribute("listaEmpleadosPorSalario", employeesRepository.obtenerEmpleadosPorSalario());
         model.addAttribute("listaDepartamentoPaisCiudad",employeesRepository.obtenerReporteDepartamentosPaisCiudad());
-
+        model.addAttribute("listaGerentesExperiencia",employeesRepository.obtenerGerenteConExperiencia());
         return "Search/indice";
     }
 
