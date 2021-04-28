@@ -28,7 +28,8 @@ public class HistoryController {
     @PostMapping("/search")
     public String searchHistory(@RequestParam("searchParam") String searchParam,
                                 Model model){
-        model.addAttribute("historyLust",employeesRepository.historyEmpleadosFiltro(searchParam));
+        model.addAttribute("historyList",employeesRepository.historyEmpleadosFiltro(searchParam));
+
         return "/history/list";
     }
 
