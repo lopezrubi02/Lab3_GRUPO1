@@ -40,14 +40,19 @@ List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
         "where (now()-m.hire_date)>5",nativeQuery = true)
     List<GerenteConExperienciaDTO> obtenerGerenteConExperiencia();
 
-    @Query(value="select * from employees where first_name =?1", nativeQuery = true)
-    List<Employees> buscarEmpleadosporNombre(String nombre);
+    @Query(value="select e.first_name,e.last_name,j.job_title,d.department_name,l.city  from employees e\n" +
+            "inner join jobs j on (j.job_id= e.job_id)\n" +
+            "inner join departments d on (d.department_id = e.department_id)\n" +
+            "inner join locations l on (d.location_id = l.location_id)\n" +
+            "where first_name like %?1 or last_name like %?1 \n" +
+            "or job_title like %?1 or department_name like %?1 ;", nativeQuery = true)
+    List<Employees> buscarEmpleadosporBuscador(String nombre);
 
-    @Query(value="select * from employees where last_name = ?1",nativeQuery = true)
-    List<Employees> buscarEmpleadosporApellido(String apellido);
-
-    @Query(value="select * from employees e inner join departments d on (e.department_id=d.department_id and d.department_name=?1);",nativeQuery = true)
-    List<Employees> buscarEmpleadosporDepartamento(String departamento);
-
+    @Query(value = "select e.first_name,e.last_name,j.job_title,d.department_name,date(e.hire_date) as hire_date from employees e\n" +
+            "inner join jobs j on (j.job_id = e.job_id)\n" +
+            "inner join departments d on (d.department_id = e.department_id)\n" +
+            "where first_name like %?1 or last_name like %?1 \n" +
+            "or job_title like %?1 or department_name like %?1", nativeQuery = true)
+    List<Employees> historyEmpleadosFiltro(String searchParam);
 
 }

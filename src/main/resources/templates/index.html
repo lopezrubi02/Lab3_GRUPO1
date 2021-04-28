@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="cabecera(titulo)">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -9,8 +9,8 @@
 </head>
 <body class="container">
 <h1>Gestión de Laboratorio 3</h1>
-<a th:href="@{/search/salario}">Ir a la gestión de empleados</a><br />                 <!-- COMPLETAR -->
-<a th:href="@{}">Ir al historial de empleados</a><br />                <!-- COMPLETAR -->
-<a th:href="@{}">Reportes</a>                <!-- COMPLETAR -->
+<a th:href="@{/employee}">Ir a la gestión de empleados</a><br />                 <!-- COMPLETAR -->
+<a th:href="@{/history}">Ir al historial de empleados</a><br />                <!-- COMPLETAR -->
+<a th:href="@{/search/salario}">Reportes</a>                <!-- COMPLETAR -->
 </body>
 </html>

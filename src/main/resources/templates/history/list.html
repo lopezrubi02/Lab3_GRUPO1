@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index.html :: cabecera(titulo = 'Historial de Empleados')">
+</head>
+<body>
+<div class="container">
+  <h1>Historial de Empleados</h1>
+
+  <form class="input-group mb-lg-3" method="post" th:action="@{history/search}">                <!-- COMPLETAR -->
+    <input name="searchParam" class="form-control mb-3" type="text" placeholder="Search" th:text="${searchParam}"/>
+    <!-- COMPLETAR -->
+    <div class="input-group-append">
+      <button class="btn btn-outline-info" type="submit" >Search</button>
+      <a class="btn btn-outline-danger ml-2" th:href="@{/history}">Clear</a>
+    </div>
+  </form>
+  <!-- COMPLETAR -->
+  <table class="table table-sm" >
+    <thead>
+    <tr>
+
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Puesto</th>
+      <th>Departamento</th>
+      <th>Fecha inicio</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee, info : ${historyList}">
+
+      <td th:text="${employee.firstName}"></td>
+      <td th:text="${employee.lastName}"></td>
+      <td th:text="${employee.jobs.jobTitle}"></td>
+      <td th:text="${employee.departments.locations.city}"></td>
+      <td th:text="${employee.hireDate}"></td>
+    </tr>
+    <!-- COMPLETAR -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
