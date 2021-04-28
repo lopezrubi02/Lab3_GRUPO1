@@ -23,13 +23,13 @@ public interface EmployeesRepository extends JpaRepository<Employees,Integer> {
 List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
 
 
-@Query(value = "SELECT c.country_name, l.city, count(e.employee_id) AS `empleados`, \n" +
-        "count(distinct l.city) as 'cantidad' FROM countries c\n" +
-        "INNER JOIN locations l ON (l.country_id = c.country_id)\n" +
-        "INNER JOIN departments d ON (d.location_id = l.location_id)\n" +
-        "INNER JOIN employees e ON (e.department_id = d.department_id)\n" +
-        "GROUP BY l.city\n" +
-        "HAVING `empleados` > 3",nativeQuery = true)
+@Query(value = "SELECT c.country_name as pais, l.city as ciudad, count(e.employee_id) AS `empleados`,\n" +
+        "        count(distinct l.city) as 'cantidad' FROM countries c\n" +
+        "        INNER JOIN locations l ON (l.country_id = c.country_id)\n" +
+        "        INNER JOIN departments d ON (d.location_id = l.location_id)\n" +
+        "        INNER JOIN employees e ON (e.department_id = d.department_id)\n" +
+        "        GROUP BY l.city\n" +
+        "        HAVING `empleados` > 3",nativeQuery = true)
     List<DepartamentosPaisCiudadDTO> obtenerReporteDepartamentosPaisCiudad();
 
 @Query(value = "SELECT d.department_name as 'departamento', m.first_name as 'nombre',m.last_name as 'apellido',\n" +
