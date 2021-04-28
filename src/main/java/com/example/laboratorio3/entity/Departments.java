@@ -12,7 +12,7 @@ public class Departments {
     @Column(name = "department_name")
     private String departmentName;
     @Column(name = "manager_id")
-    private int managerId;
+    private Integer managerId;
 
     //@Column(name = "location_id")
     //private int locationId;
@@ -37,11 +37,11 @@ public class Departments {
         this.departmentName = departmentName;
     }
 
-    public int getManagerId() {
+    public Integer getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(int managerId) {
+    public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
 
