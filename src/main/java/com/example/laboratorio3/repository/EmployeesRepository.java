@@ -31,4 +31,13 @@ List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
         "HAVING `empleados` > 3",nativeQuery = true)
     List<DepartamentosPaisCiudadDTO> obtenerReporteDepartamentosPaisCiudad();
 
+    @Query(value="select * from employees where first_name =?1", nativeQuery = true)
+    List<Employees> buscareEmpleadosporNombre(String nombre);
+
+    @Query(value="select * from employees where last_name = ?1",nativeQuery = true)
+    List<Employees> buscarEmpleadosporApellido(String apellido);
+
+    @Query(value="select * from employees e inner join departments d on (e.department_id=d.department_id and d.department_name=?1);",nativeQuery = true)
+    List<Employees> buscarEmpleadosporDepartamento(String departamento);
+
 }

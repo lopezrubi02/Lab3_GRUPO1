@@ -13,8 +13,13 @@ public class Departments {
     private String departmentName;
     @Column(name = "manager_id")
     private int managerId;
-    @Column(name = "location_id")
-    private int locationId;
+
+    //@Column(name = "location_id")
+    //private int locationId;
+
+    @ManyToOne
+    @JoinColumn(name="location_id")
+    private Locations locations;
 
     public int getDepartmentId() {
         return departmentId;
@@ -40,11 +45,11 @@ public class Departments {
         this.managerId = managerId;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public Locations getLocations() {
+        return locations;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setLocations(Locations locations) {
+        this.locations = locations;
     }
 }

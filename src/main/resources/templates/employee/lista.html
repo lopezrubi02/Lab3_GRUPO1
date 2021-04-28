@@ -11,24 +11,40 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/new'}">Nuevo Empleado</a><!-- COMPLETAR -->
-        <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
+        <form class="input-group mb-lg-3" method="post" th:action="@{employee/BuscarEmpleados}">                <!-- COMPLETAR -->
+            <input name="searchField" class="form-control mb-3" type="text" placeholder="Search"/>
             <!-- COMPLETAR -->
             <div class="input-group-append">
                 <!-- COMPLETAR -->
             </div>
         </form>
-
-        <!-- COMPLETAR -->
         <!-- COMPLETAR -->
             <table class="table table-sm" th:if="${}">
                 <thead>
                 <tr>
-                    <!-- COMPLETAR -->
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Puesto</th>
+                    <th>Departamento</th>
+                    <th>Ciudad</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
+                    <tr th:each="employee, info : ${listaEmpleados}">
+                        <td th:text="${info.index + 1}"></td>
+                        <td th:text="${employee.firstName}"></td>
+                        <td th:text="${employee.lastName}"></td>
+                        <td th:text="${employee.jobs.jobTitle}"></td>
+                        <td th:text="${employee.departments.locations.city}"></td>
+                        <td><a class="btn btn-primary" th:href="@{'/employee/edit' + '?id=' + ${employee.employeeId}}">Editar</a>
+                        </td>
+                        <td><a class="btn btn-danger" th:href="@{'/employee/delete' + '?id=' + ${employee.employeeId}}">Borrar</a>
+                        </td>
+                    </tr>
                 <!-- COMPLETAR -->
                 </tbody>
             </table>

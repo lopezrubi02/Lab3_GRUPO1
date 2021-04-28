@@ -4,6 +4,7 @@ import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.repository.DepartmentsRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
 import com.example.laboratorio3.repository.JobsRepository;
+import com.example.laboratorio3.repository.LocationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,9 @@ public class EmployeeController {
 
     @Autowired
     DepartmentsRepository departmentsRepository;
+
+    @Autowired
+    LocationsRepository locationsRepository;
 
     @GetMapping(value = {"", "/"})
     public String listaEmployee(Model model){
@@ -75,7 +79,7 @@ public class EmployeeController {
         //COMPLETAR
     }
 
-
+    @GetMapping(value = { "/delete"})
     public String borrarEmpleado(@RequestParam("id") int id, RedirectAttributes attr) {
         Optional<Employees> optionalEmployees =employeesRepository.findById(id);
         if(optionalEmployees.isPresent()){
@@ -96,5 +100,11 @@ public class EmployeeController {
     }
 
     //COMPLETAR
+    @PostMapping("/BuscarEmpleados")
+    public String buscarEmpleado(@RequestParam("searchField") String searchField, Model model){
+        List<Employees> listaEmpleados = employeesRepository.buscareEmpleadosporNombre(searchField);
+        model.addAttribute("listaEmpleados",listaEmpleados);
+        return "employee/lista";
+    }
 
 }
