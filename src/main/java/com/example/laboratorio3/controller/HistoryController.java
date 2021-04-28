@@ -29,7 +29,7 @@ public class HistoryController {
     public String searchHistory(@RequestParam("searchParam") String searchParam,
                                 Model model){
         model.addAttribute("historyLust",employeesRepository.historyEmpleadosFiltro(searchParam));
-        return "/history";
+        return "/history/list";
     }
 
 }

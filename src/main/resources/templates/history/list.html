@@ -4,6 +4,7 @@
 </head>
 <body>
 <div class="container">
+  <nav th:replace="index.html" :: navbar></nav>
   <h1>Historial de Empleados</h1>
 
   <form class="input-group mb-lg-3" method="post" th:action="@{history/search}">                <!-- COMPLETAR -->

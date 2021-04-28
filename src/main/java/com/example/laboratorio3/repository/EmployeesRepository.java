@@ -40,7 +40,7 @@ List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
         "where (now()-m.hire_date)>5",nativeQuery = true)
     List<GerenteConExperienciaDTO> obtenerGerenteConExperiencia();
 
-    @Query(value="select e.first_name,e.last_name,j.job_title,d.department_name,l.city  from employees e\n" +
+    @Query(value="select *  from employees e\n" +
             "inner join jobs j on (j.job_id= e.job_id)\n" +
             "inner join departments d on (d.department_id = e.department_id)\n" +
             "inner join locations l on (d.location_id = l.location_id)\n" +
@@ -48,7 +48,7 @@ List<EmpleadosSalarioDTO> obtenerEmpleadosPorSalario();
             "or job_title like %?1 or department_name like %?1 ;", nativeQuery = true)
     List<Employees> buscarEmpleadosporBuscador(String nombre);
 
-    @Query(value = "select e.first_name,e.last_name,j.job_title,d.department_name,date(e.hire_date) as hire_date from employees e\n" +
+    @Query(value = "select * from employees e\n" +
             "inner join jobs j on (j.job_id = e.job_id)\n" +
             "inner join departments d on (d.department_id = e.department_id)\n" +
             "where first_name like %?1 or last_name like %?1 \n" +
