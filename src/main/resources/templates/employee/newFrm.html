@@ -47,8 +47,8 @@
 
             <div class="row">
                 <div class="form-group col-6">
-                    <label for="jobName" class="form-label">Puesto</label>
-                    <select class="form-control" name="jobName" id="jobName">
+                    <label for="jobs" class="form-label">Puesto</label>
+                    <select class="form-control" name="jobs" id="jobs">
                         <option th:each="trabajos : ${listaTrabajos}" th:value="${trabajos.jobId}" th:text="${trabajos.jobTitle}"></option>
                     </select>
                     <!-- COMPLETADO -->
@@ -66,17 +66,21 @@
                 <div class="form-group col-6">
                     <label for="manager" class="form-label">Jefe</label>
                     <select class="form-control" name="manager" id="manager">
-                        <option th:each="jefe : ${listaJefes}" th:value="${jefe.employeeId}" th:text="${jefe.firstName + jefe.lastName}"></option>
+                        <option th:each="jefe : ${listaJefes}" th:value="${jefe.employeeId}" th:text="${jefe.firstName + ' ' + jefe.lastName}"></option>
                     </select>
                     <!-- COMPLETADO -->
                 </div>
                 <div class="form-group col-6">
                     <label for="departments" class="form-label">Departamento</label>
-                    <select class="form-control" name="deparments" id="departments">
+                    <select class="form-control" name="departments" id="departments">
                         <option th:each="departamento : ${listaDepartamentos}" th:value="${departamento.departmentId}" th:text="${departamento.departmentName}"></option>
                     </select>
                     <!-- COMPLETADO -->
                 </div>
+            </div>
+            <div>
+                <label for="hireDate" class="form-label"></label>
+                <input type="hidden" id="hireDate" name="hireDate" value="2020-04-17 00:00:00">
             </div>
 
             <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>                 <!-- COMPLETAR -->
