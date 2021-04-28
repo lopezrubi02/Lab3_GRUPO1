@@ -54,9 +54,9 @@ public class EmployeeController {
     @PostMapping("/save")
     public String guardarEmployee(Employees employees,RedirectAttributes attr) {
         if (employees.getEmployeeId() == 0) {
-            attr.addFlashAttribute("msg", "Producto creado exitosamente");
+            attr.addFlashAttribute("msg", "Usuario creado exitosamente");
         } else {
-            attr.addFlashAttribute("msg", "Producto actualizado exitosamente");
+            attr.addFlashAttribute("msg", "Usuario actualizado exitosamente");
         }
         employeesRepository.save(employees);
         //COMPLETAR
@@ -84,7 +84,7 @@ public class EmployeeController {
         Optional<Employees> optionalEmployees =employeesRepository.findById(id);
         if(optionalEmployees.isPresent()){
             employeesRepository.deleteById(id);
-            attr.addFlashAttribute("msg","usuario borrado exitosamente");
+            attr.addFlashAttribute("msg","Usuario borrado exitosamente");
         }
        //COMPLETADO
         return "redirect:/employee";
